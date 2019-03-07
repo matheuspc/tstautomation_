@@ -63,6 +63,8 @@ namespace jsonDemo
             //Acessar aba nova tarefa
             driver.FindElement(By.PartialLinkText("Nova tarefa")).Click();
 
+            //fecha o navegador
+            //driver.Close();
 
 
 
