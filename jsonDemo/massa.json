@@ -1,6 +1,6 @@
 ﻿[
   {
-    "titulo":: "New Task 1",
+    "titulo": "New Task 1",
     "descricao": "New task for automation test",
     "dtInicio": "2019-03-10",
     "dtPrevisto": "2019-04-10",
