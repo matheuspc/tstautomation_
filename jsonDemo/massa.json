@@ -1,26 +1,16 @@
 ﻿[
   {
-    "titulo": "Documentar REQ01",
-    "descricao": "Escrever documentação do Requisito REQ01",
-    "dtEntrega": "01/02/2019",
-    "tags": [ "gestao", "req01" ]
+    "titulo":: "New Task 1",
+    "descricao": "New task for automation test",
+    "dtInicio": "2019-03-10",
+    "dtPrevisto": "2019-04-10",
+    "tempoEstimado": 30
   },
   {
-    "titulo": "Documentar REQ02",
-    "descricao": "Escrever documentação do Requisito REQ02",
-    "dtEntrega": "01/02/2019",
-    "tags": [ "gestao", "req02" ]
-  },
-  {
-    "titulo": "Desenvolver REQ01",
-    "descricao": "Desenvolver Requisito REQ01",
-    "dtEntrega": "07/02/2019",
-    "tags": [ "dev", "req01", "qa-aprovado" ]
-  },
-  {
-    "titulo": "Desenvolver REQ02",
-    "descricao": "Desenvolver Requisito REQ02",
-    "dtEntrega": "12/02/2019",
-    "tags": [ "dev", "req01", "qa-aprovado" ]
+    "titulo": "New Task 2",
+    "descricao": "New task 2 for automation test",
+    "dtInicio": "2019-05-10",
+    "dtPrevisto": "2019-06-10",
+    "tempoEstimado": 10
   }
 ]

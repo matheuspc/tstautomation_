@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using OpenQA;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.IO;
+using Newtonsoft.Json;
+using jsonDemo.Serialization;
 
 namespace jsonDemo
 {
@@ -13,55 +16,81 @@ namespace jsonDemo
     {
         public static void Main(string[] args)
         {
-            //Inicia uma instância do navegador chrome
-            IWebDriver driver = new ChromeDriver();
+            ////Inicia uma instância do navegador chrome
+            //IWebDriver driver = new ChromeDriver();
 
-            //Direciona o navegador para o endereço escolhido
-            driver.Navigate().GoToUrl("http://demo.redmine.org");
+            ////Direciona o navegador para o endereço escolhido
+            //driver.Navigate().GoToUrl("http://demo.redmine.org");
 
-            //Acessa a opção para cadastro de novo usuário
-            driver.FindElement(By.PartialLinkText("Cadastre-se")).Click();
+            ////Acessa a opção para cadastro de novo usuário
+            //driver.FindElement(By.PartialLinkText("Cadastre-se")).Click();
 
-            //Preenche o formulário de criação do usuário
-            driver.FindElement(By.Id("user_login")).SendKeys("xxylfas");
-            driver.FindElement(By.Id("user_password")).SendKeys("Teste@2019");
-            driver.FindElement(By.Id("user_password_confirmation")).SendKeys("Teste@2019");
-            driver.FindElement(By.Id("user_firstname")).SendKeys("xxylfas");
-            driver.FindElement(By.Id("user_lastname")).SendKeys("asfasd");
-            driver.FindElement(By.Id("user_mail")).SendKeys("xxylfas.pc@live.com");
+            ////Preenche o formulário de criação do usuário
+            //driver.FindElement(By.Id("user_login")).SendKeys("xxylfas");
+            //driver.FindElement(By.Id("user_password")).SendKeys("Teste@2019");
+            //driver.FindElement(By.Id("user_password_confirmation")).SendKeys("Teste@2019");
+            //driver.FindElement(By.Id("user_firstname")).SendKeys("xxylfas");
+            //driver.FindElement(By.Id("user_lastname")).SendKeys("asfasd");
+            //driver.FindElement(By.Id("user_mail")).SendKeys("xxylfas.pc@live.com");
 
 
-            //Envia informações para criação do usuário
-            driver.FindElement(By.Name("commit")).Click();
+            ////Envia informações para criação do usuário
+            //driver.FindElement(By.Name("commit")).Click();
 
-            //Acessa a aba projetos
-            driver.FindElement(By.PartialLinkText("Projetos")).Click();
+            ////Acessa a aba projetos
+            //driver.FindElement(By.PartialLinkText("Projetos")).Click();
 
-            //Criar novo projeto
-            driver.FindElement(By.PartialLinkText("Novo projeto")).Click();
+            ////Criar novo projeto
+            //driver.FindElement(By.PartialLinkText("Novo projeto")).Click();
 
-            //Preenche dados para criação do novo projeto
-            var projectName = "New Test Project II";
-            driver.FindElement(By.Id("project_name")).SendKeys(projectName);
-            driver.FindElement(By.Id("project_description")).SendKeys("This is a new project example for automation test.");
-            driver.FindElement(By.Id("project_identifier")).SendKeys("ntp");
+            ////Preenche dados para criação do novo projeto
+            //var projectName = "New Test Project II";
+            //driver.FindElement(By.Id("project_name")).SendKeys(projectName);
+            //driver.FindElement(By.Id("project_description")).SendKeys("This is a new project example for automation test.");
+            //driver.FindElement(By.Id("project_identifier")).SendKeys("ntp");
 
-            //Deixa apenas a tarefa Bug selecionada
-            var listaTarefas = driver.FindElements(By.Name("project[tracker_ids][]"));
-            listaTarefas[1].Click();
-            listaTarefas[2].Click();
+            ////Deixa apenas a tarefa Bug selecionada
+            //var listaTarefas = driver.FindElements(By.Name("project[tracker_ids][]"));
+            //listaTarefas[1].Click();
+            //listaTarefas[2].Click();
 
-            //Clicar no botão para criação do projeto
-            driver.FindElement(By.Name("continue")).Click();
+            ////Clicar no botão para criação do projeto
+            //driver.FindElement(By.Name("continue")).Click();
 
-            //Acessa a aba projetos
-            driver.FindElement(By.PartialLinkText("Projetos")).Click();
+            ////Acessa a aba projetos
+            //driver.FindElement(By.PartialLinkText("Projetos")).Click();
 
-            //Acessa o projeto criado previamente
-            driver.FindElement(By.PartialLinkText(projectName)).Click();
+            ////Acessa o projeto criado previamente
+            //driver.FindElement(By.PartialLinkText(projectName)).Click();
 
-            //Acessar aba nova tarefa
-            driver.FindElement(By.PartialLinkText("Nova tarefa")).Click();
+            ////Acessar aba nova tarefa
+            //driver.FindElement(By.PartialLinkText("Nova tarefa")).Click();
+
+            var json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\massa.json");
+
+            var tarefa = JsonConvert.DeserializeObject<List<Tarefa>>(json);
+
+            //for (int i=0; i<tarefa.Count(); i++)
+            //{
+            //    Console.WriteLine(tarefa[i].titulo);
+            //    Console.WriteLine(tarefa[i].descricao);
+            //    Console.WriteLine(tarefa[i].dtInicio);
+            //    Console.WriteLine(tarefa[i].dtPrevisto);
+            //    Console.WriteLine(tarefa[i].tempoEstimado);
+            //}
+
+            foreach(Tarefa task in tarefa)
+            {
+                Console.WriteLine(task.titulo);
+                Console.WriteLine(task.descricao);
+                Console.WriteLine(task.dtInicio);
+                Console.WriteLine(task.dtPrevisto);
+                Console.WriteLine(task.tempoEstimado);                
+            }
+
+            Console.ReadLine();
+
+
 
             //fecha o navegador
             //driver.Close();
